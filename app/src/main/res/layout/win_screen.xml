@@ -12,25 +12,26 @@
     <TextView
         android:id="@+id/display_winner"
         android:layout_width="393dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="5dp"
-        android:text="Text"
+        android:layout_height="100dp"
         android:textAlignment="center"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="36sp"
- />
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/return_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Return to Menu"
+
+
         app:layout_constraintTop_toBottomOf="@+id/display_winner"
 
 
-        />
+        tools:layout_editor_absoluteX="109dp"
+        android:layout_marginTop="310dp" />
 
 
 </android.support.constraint.ConstraintLayout>
