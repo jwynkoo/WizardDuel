@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jacob.wizardduel.PlayScreen"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <Button
+        android:id="@+id/dpr_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DPR Attack"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="124dp"
+        app:layout_constraintLeft_toLeftOf="@+id/heavy_attack"
+        android:layout_marginLeft="9dp" />
+
+    <Button
+        android:id="@+id/heavy_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heavy Attack"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/dpr_attack"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.501" />
+
+    <Button
+        android:id="@+id/basic_attack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Basic Attack"
+        app:layout_constraintBottom_toTopOf="@+id/heavy_attack"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/heavy_attack"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="-17dp" />
+
+    <Button
+        android:id="@+id/shield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:text="Shield"
+        app:layout_constraintLeft_toLeftOf="@+id/dpr_attack"
+        app:layout_constraintTop_toBottomOf="@+id/dpr_attack"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="9dp" />
+
+    <Button
+        android:id="@+id/heal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heal"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/shield"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/shield"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="0dp" />
+</android.support.constraint.ConstraintLayout>

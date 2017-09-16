@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Wizard Duel</string>
+    <string name="title_activity_rules_menu">RulesMenu</string>
+</resources>
