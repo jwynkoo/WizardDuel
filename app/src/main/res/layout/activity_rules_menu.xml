@@ -4,13 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#005"
     tools:context="com.example.jacob.wizardduel.RulesMenu">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HERE ARE THE RULES"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="247dp" />
+        android:id="@+id/rules"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rules"
+        android:typeface="sans"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFDF00"
+        android:textSize="14sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="4dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="94dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
