@@ -44,8 +44,7 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/heavy_attack"
-        android:layout_marginLeft="2dp"
-        android:layout_marginBottom="-17dp" />
+        android:layout_marginLeft="2dp" />
 
     <Button
         android:id="@+id/shield"
@@ -69,6 +68,21 @@
         app:layout_constraintTop_toBottomOf="@+id/shield"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/shield"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="0dp" />
+        android:layout_marginLeft="1dp" />
+
+    <TextView
+        android:id="@+id/turnID"
+        android:layout_width="393dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="5dp"
+        android:text="Text"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 </android.support.constraint.ConstraintLayout>
