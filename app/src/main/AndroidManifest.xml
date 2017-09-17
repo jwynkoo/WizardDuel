@@ -28,6 +28,7 @@
             android:name=".WinScreen"
             android:label="@string/title_activity_win_screen"
             android:theme="@style/AppTheme" />
+        <activity android:name=".GesturePlayScreen"></activity>
     </application>
 
 </manifest>
