@@ -19,11 +19,6 @@
         <activity
             android:name=".PlayScreen"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RulesMenu"
@@ -37,7 +32,6 @@
             android:label="@string/title_activity_win_screen"
             android:theme="@style/AppTheme" />
         <activity android:name=".GesturePlayScreen" />
-        <activity android:name=".InfoMenu" />
     </application>
 
 </manifest>
