@@ -254,7 +254,7 @@ public class PlayScreen extends AppCompatActivity {
             turnID.setText("Player 2's Turn");
             checkForDPR(p2_dpr);
         }
-        stats.setText("P1 Health: " + p1Health + "/100\n" + "P1 Mana: " + p1Mana + "/100\n" + "P2 Health: " + p2Health + "/100\n" + "P2 Mana: " + p2Mana + "/100\n");
+        stats.setText("P1 Health: " + p1Health + "/100\n" + "P1 Mana: " + p1Mana + "/100\n\n\n" + "P2 Health: " + p2Health + "/100\n" + "P2 Mana: " + p2Mana + "/100\n");
     }
 
     void checkForDPR(boolean status) {
