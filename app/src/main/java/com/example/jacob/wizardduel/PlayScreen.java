@@ -56,6 +56,7 @@ public class PlayScreen extends AppCompatActivity {
         final Button heal = (Button) findViewById(R.id.heal);
         final Button do_nothing = (Button)findViewById(R.id.do_nothing);
 
+        rotateScreen(isreverse);
         updateUI();
 
         basic_attack.setOnClickListener(new View.OnClickListener() {
@@ -251,15 +252,6 @@ public class PlayScreen extends AppCompatActivity {
         final TextView turnID = (TextView) findViewById(R.id.turnID);
         final TextView stats = (TextView) findViewById(R.id.stats);
 
-
-        if (player == 1) {
-            checkForDPR(p1_dpr);
-            turnID.setText("Player 1's Turn");
-        } else {
-            checkForDPR(p2_dpr);
-            turnID.setText("Player 2's Turn");
-        }
-
         if (p1Health <= 0) {
             //print Player 2 wins
             gameOver = true;
@@ -288,6 +280,14 @@ public class PlayScreen extends AppCompatActivity {
             }
             player = 1;
             rotateScreen(isreverse);
+        }
+
+        if (player == 1) {
+            checkForDPR(p1_dpr);
+            turnID.setText("Player 1's Turn");
+        } else {
+            checkForDPR(p2_dpr);
+            turnID.setText("Player 2's Turn");
         }
 
         stats.setText("P1 Health: " + p1Health + "/100\n" + "P1 Mana: " + p1Mana + "/100\n\n\n" + "P2 Health: " + p2Health + "/100\n" + "P2 Mana: " + p2Mana + "/100\n");
