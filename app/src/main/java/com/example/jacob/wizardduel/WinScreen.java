@@ -1,5 +1,6 @@
 package com.example.jacob.wizardduel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,5 +16,16 @@ public class WinScreen extends AppCompatActivity {
         this.setTitle("Winner");
         TextView winner = (TextView) findViewById(R.id.display_winner);
         winner.setText("is the winner!");
+
+
+        final Button return_button = (Button)findViewById(R.id.return_button);
+        return_button.setOnClickListener(new View.OnClickListener() {
+
+
+            public void onClick(View v) {
+                Intent showWinner = new Intent(WinScreen.this, MainMenu.class);
+                startActivity(showWinner);
+            }
+        });
     }
 }
