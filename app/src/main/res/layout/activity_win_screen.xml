@@ -8,6 +8,16 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha=".4"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/wallpaper"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="8dp" />
+
     <TextView
         android:id="@+id/display_winner"
         android:layout_width="0dp"
