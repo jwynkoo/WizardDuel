@@ -9,6 +9,15 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:scaleType="fitXY"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:srcCompat="@drawable/wallpaper"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="8dp" />
+
     <Button
         android:id="@+id/gotoPlay"
         android:layout_width="wrap_content"
@@ -34,13 +43,6 @@
         android:layout_marginBottom="106dp"
         app:layout_constraintLeft_toLeftOf="@+id/gotoPlay" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:scaleType="fitXY"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:srcCompat="@drawable/wallpaper"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="8dp" />
+
 
 </android.support.constraint.ConstraintLayout>
