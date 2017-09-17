@@ -4,25 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#747486"
     tools:context="com.example.jacob.wizardduel.PlayScreen"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha=".4"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/wallpaper"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <TextView
         android:id="@+id/stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stats"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="42dp"
-        android:textSize = "25sp"
+        android:text="Stats"
         android:textAlignment="center"
+        android:textColor="#FFFFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/turnID"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/dpr_attack"
@@ -86,6 +98,19 @@
         app:layout_constraintLeft_toLeftOf="@+id/shield"
         android:layout_marginLeft="1dp" />
 
+    <Button
+        android:id="@+id/do_nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do Nothing"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heal"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="0dp" />
+
     <TextView
         android:id="@+id/turnID"
         android:layout_width="393dp"
@@ -93,6 +118,7 @@
         android:layout_marginTop="5dp"
         android:text="Text"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintLeft_toLeftOf="parent"

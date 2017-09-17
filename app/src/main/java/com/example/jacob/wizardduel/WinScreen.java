@@ -14,9 +14,13 @@ public class WinScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win_screen);
 
+        Bundle extras = getIntent().getExtras();
+        String whatWasSent = extras.getString("KEY");
+
+
         this.setTitle("Winner");
         TextView winner = (TextView) findViewById(R.id.display_winner);
-        winner.setText("is the winner!");
+        winner.setText(whatWasSent + " is the winner!");
 
         final Button return_button = (Button)findViewById(R.id.return_button);
         return_button.setOnClickListener(new View.OnClickListener() {
