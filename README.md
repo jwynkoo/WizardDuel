@@ -1,1 +1,1 @@
-WizardDuel
+Wizard Duel was designed in 24 hours as a part of Purdue University's introductory hackathon, Hello World 2017. None of the developers had any prior experience developing android applications, yet Wizard Duel was able to take the Best Android Application prize at the event.
