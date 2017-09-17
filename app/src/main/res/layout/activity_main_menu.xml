@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Wizardy Spells and Shit"
+        android:text="Wizard Duel"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -281,6 +281,7 @@ public class PlayScreen extends AppCompatActivity {
             GifTextView fire_player2 = (GifTextView) findViewById(fire_play2);
             fire_player2.setVisibility(View.VISIBLE);
             fire_player1.setVisibility(View.INVISIBLE);
+            rotateScreen(isreverse);
         } else if (turnOver && player == 2) {
             p2Mana += mana_per_round;
             if (p2Mana > maxMana) {
@@ -291,6 +292,7 @@ public class PlayScreen extends AppCompatActivity {
             GifTextView fire_player2 = (GifTextView) findViewById(fire_play2);
             fire_player1.setVisibility(View.VISIBLE);
             fire_player2.setVisibility(View.INVISIBLE);
+            rotateScreen(isreverse);
         }
 
         if (player == 1) {
