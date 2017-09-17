@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
 
-        final Button gotoPlay = (Button)findViewById(R.id.gotoPlay);
+        final Button gotoPlay = (Button) findViewById(R.id.gotoPlay);
         gotoPlay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent goPlay = new Intent(MainMenu.this, PlayScreen.class);
@@ -22,7 +23,15 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        final Button gotoRules = (Button)findViewById(R.id.gotoRules);
+        final Button gotoPlayGestures = (Button) findViewById(R.id.gotoPlayGestures);
+        gotoPlayGestures.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent goPlayGestures = new Intent(MainMenu.this, GesturePlayScreen.class);
+                startActivity(goPlayGestures);
+            }
+        });
+
+        final Button gotoRules = (Button) findViewById(R.id.gotoRules);
         gotoRules.setOnClickListener(new View.OnClickListener() {
 
 
@@ -31,6 +40,14 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(goRules);
             }
         });
-    }
 
+        final ImageButton gotoInfo = (ImageButton) findViewById(R.id.aboutView);
+        gotoInfo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent goInfo = new Intent(MainMenu.this, InfoMenu.class);
+                startActivity(goInfo);
+            }
+
+        });
+    }
 }

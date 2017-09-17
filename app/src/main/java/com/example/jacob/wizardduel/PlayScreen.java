@@ -1,6 +1,10 @@
 package com.example.jacob.wizardduel;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.gesture.Gesture;
+import android.gesture.GestureOverlayView;
+import android.gesture.Prediction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -8,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class PlayScreen extends AppCompatActivity {
 
@@ -22,9 +28,10 @@ public class PlayScreen extends AppCompatActivity {
     int heavy_cost = 5;
     int heavy_damage = 25;
     int dpr_cost = 0;
-    int dpr_base_damage = 0;
-    int dpr_round_damage = 0;
-    int dpr_rounds_left = 0;
+    int dpr_base_damage = 5;
+    int dpr_round_damage = 20;
+    int dpr_rounds_left_1 = 0;
+    int dpr_rounds_left_2 = 0;
     boolean p1_dpr = false;
     boolean p2_dpr = false;
     int shield_cost = 0;
@@ -35,6 +42,7 @@ public class PlayScreen extends AppCompatActivity {
     boolean turnOver = false;
     boolean gameOver = false;
     int refresh = 0;
+    boolean isreverse = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +56,7 @@ public class PlayScreen extends AppCompatActivity {
         final Button heal = (Button) findViewById(R.id.heal);
         final Button do_nothing = (Button)findViewById(R.id.do_nothing);
 
-        updateUI(p1Health, p2Health);
+        updateUI();
 
         basic_attack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -71,12 +79,12 @@ public class PlayScreen extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "Used " + basic_cost + " mana and did " + basic_damage + " damage.", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn", Toast.LENGTH_SHORT);
                     toast.show();
                     turnOver = true;
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 }
             }
         });
@@ -102,12 +110,12 @@ public class PlayScreen extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "Used " + heavy_cost + " mana and did " + heavy_damage + " damage.", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn", Toast.LENGTH_SHORT);
                     toast.show();
                     turnOver = true;
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 }
             }
         });
@@ -116,15 +124,23 @@ public class PlayScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if ((player == 1 && checkForCost(dpr_cost, p1Mana)) || (player == 2 && checkForCost(dpr_cost, p2Mana))) {
                     if (!checkShield(shield_status)) {
-                        dpr_rounds_left = 6;
+                        if(player == 1) {
+                            dpr_rounds_left_2 = 6;
+                        } else {
+                            dpr_rounds_left_1 = 6;
+                        }
                         if (player == 1) {
                             p2Health -= dpr_base_damage;
                             p2_dpr = true;
                         } else {
                             p1Health -= dpr_base_damage;
-                            p2_dpr = true;
+                            p1_dpr = true;
                         }
-                        dpr_rounds_left -= 1;
+                        if(player == 1) {
+                            dpr_rounds_left_1 -= 1;
+                        } else {
+                            dpr_rounds_left_2 -= 1;
+                        }
                     } else {
                         turnOffShield();
                     }
@@ -134,15 +150,21 @@ public class PlayScreen extends AppCompatActivity {
                         p2Mana -= dpr_cost;
                     }
                     turnOver = true;
-                    Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left + " rounds.", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP, 0, 0);
-                    toast.show();
-                    updateUI(p1Health, p2Health);
+                    if(player == 1) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_1 + " rounds.", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_2 + " rounds.", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                    }
+                    updateUI();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn", Toast.LENGTH_SHORT);
                     toast.show();
                     turnOver = true;
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 }
             }
         });
@@ -160,12 +182,12 @@ public class PlayScreen extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "Used " + shield_cost + " mana and blocked next round.", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn", Toast.LENGTH_SHORT);
                     toast.show();
                     turnOver = true;
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 }
             }
         });
@@ -193,12 +215,12 @@ public class PlayScreen extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "Used " + heal_cost + " mana and regained " + heal_effect + " health.", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn", Toast.LENGTH_SHORT);
                     toast.show();
                     turnOver = true;
-                    updateUI(p1Health, p2Health);
+                    updateUI();
                 }
             }
         });
@@ -209,14 +231,34 @@ public class PlayScreen extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Did nothing", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP, 0, 0);
                 toast.show();
-                updateUI(p1Health, p2Health);
+                updateUI();
             }
         });
     }
 
-    void updateUI(int p1Health, int p2Health) {
+    public void rotateScreen(boolean reverse){
+        if (reverse) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+            isreverse = false;
+        }
+        else{
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            isreverse = true;
+        }
+    }
+
+    void updateUI() {
         final TextView turnID = (TextView) findViewById(R.id.turnID);
         final TextView stats = (TextView) findViewById(R.id.stats);
+
+
+        if (player == 1) {
+            checkForDPR(p1_dpr);
+            turnID.setText("Player 1's Turn");
+        } else {
+            checkForDPR(p2_dpr);
+            turnID.setText("Player 2's Turn");
+        }
 
         if (p1Health <= 0) {
             //print Player 2 wins
@@ -228,7 +270,7 @@ public class PlayScreen extends AppCompatActivity {
             //print Player 1 wins
             gameOver = true;
             Intent whoWon = new Intent(PlayScreen.this, WinScreen.class);
-            whoWon.putExtra("KEY", "Player 2");
+            whoWon.putExtra("KEY", "Player 1");
             startActivity(whoWon);
         }
 
@@ -238,46 +280,34 @@ public class PlayScreen extends AppCompatActivity {
                 p1Mana = maxMana;
             }
             player = 2;
+            rotateScreen(isreverse);
         } else if (turnOver && player == 2) {
             p2Mana += mana_per_round;
             if (p2Mana > maxMana) {
                 p2Mana = maxMana;
             }
             player = 1;
+            rotateScreen(isreverse);
         }
 
-
-        if (player == 1) {
-            turnID.setText("Player 1's Turn");
-            checkForDPR(p1_dpr);
-        } else {
-            turnID.setText("Player 2's Turn");
-            checkForDPR(p2_dpr);
-        }
         stats.setText("P1 Health: " + p1Health + "/100\n" + "P1 Mana: " + p1Mana + "/100\n\n\n" + "P2 Health: " + p2Health + "/100\n" + "P2 Mana: " + p2Mana + "/100\n");
+
     }
 
     void checkForDPR(boolean status) {
         if (status) {
             if (player == 1) {
                 p1Health -= dpr_round_damage;
-                dpr_rounds_left -= 1;
-                if (dpr_rounds_left == 0) {
+                dpr_rounds_left_1 -= 1;
+                if (dpr_rounds_left_1 == 0) {
                     p1_dpr = false;
                 }
             } else {
                 p2Health -= dpr_round_damage;
-                dpr_rounds_left -= 1;
-                if (dpr_rounds_left == 0) {
+                dpr_rounds_left_2 -= 1;
+                if (dpr_rounds_left_2 == 0) {
                     p2_dpr = false;
                 }
-            }
-            if (p1Health <= 0) {
-                //player 2 wins
-                System.exit(0);
-            } else if (p2Health <= 0) {
-                //player 1 wins
-                System.exit(0);
             }
         }
     }

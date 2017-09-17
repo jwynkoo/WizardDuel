@@ -12,37 +12,80 @@
     <ImageView
         android:id="@+id/imageView"
         android:scaleType="fitXY"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:srcCompat="@drawable/wallpaper"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="69dp"
+        android:id="@+id/aboutView"
+        app:srcCompat="@drawable/ic_info_black_36dp"
+        tools:layout_editor_absoluteY="495dp"
+        tools:layout_editor_absoluteX="-93dp"
+        android:clickable="true"
+        />
+
 
     <Button
         android:id="@+id/gotoPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Game"
+        android:text="Play - Buttons"
+        app:layout_constraintRight_toLeftOf="@+id/gotoPlayGestures"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/gotoRules"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/gotoRules" />
 
     <Button
         android:id="@+id/gotoRules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rules"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="106dp"
-        app:layout_constraintLeft_toLeftOf="@+id/gotoPlay" />
+        android:layout_marginBottom="50dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
+    <Button
+        android:id="@+id/gotoPlayGestures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play - Gestures"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="49dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/gotoPlay"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/gotoRules" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Wizardy Spells and Shit"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
 
 </android.support.constraint.ConstraintLayout>

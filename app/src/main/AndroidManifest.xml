@@ -17,18 +17,27 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PlayScreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".RulesMenu"
             android:parentActivityName=".MainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainMenu" />
         </activity>
-        <activity android:name=".PlayScreen" />
         <activity
             android:name=".WinScreen"
             android:label="@string/title_activity_win_screen"
             android:theme="@style/AppTheme" />
-        <activity android:name=".GesturePlayScreen"></activity>
+        <activity android:name=".GesturePlayScreen" />
+        <activity android:name=".InfoMenu" />
     </application>
 
 </manifest>
