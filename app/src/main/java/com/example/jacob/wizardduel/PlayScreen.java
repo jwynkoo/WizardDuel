@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlayScreen extends AppCompatActivity {
 
@@ -15,10 +16,10 @@ public class PlayScreen extends AppCompatActivity {
     int p1Mana = 10;
     int p2Mana = 10;
     int maxMana = 100;
-    int basic_cost = 2;
+    int basic_cost = 0;
     int basic_damage = 1;
-    int heavy_cost = 0;
-    int heavy_damage = 2;
+    int heavy_cost = 30;
+    int heavy_damage = 25;
     int dpr_cost = 0;
     int dpr_base_damage = 0;
     int dpr_round_damage = 0;
@@ -49,104 +50,139 @@ public class PlayScreen extends AppCompatActivity {
 
         basic_attack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!checkShield(shield_status)) {
-                    if (player == 1) {
-                        p2Health -= basic_damage;
+                if ((player == 1 && checkForCost(basic_cost, p1Mana)) || (player == 2 && checkForCost(basic_cost, p2Mana))) {
+                    if (!checkShield(shield_status)) {
+                        if (player == 1) {
+                            p2Health -= basic_damage;
+                        } else {
+                            p1Health -= basic_damage;
+                        }
                     } else {
-                        p1Health -= basic_damage;
+                        turnOffShield();
                     }
+                    if (player == 1) {
+                        p1Mana -= basic_cost;
+                    } else {
+                        p2Mana -= basic_cost;
+                    }
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 } else {
-                    turnOffShield();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn",Toast.LENGTH_SHORT);
+                    toast.show();
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 }
-                if(player == 1) {
-                    p1Mana -= basic_cost;
-                } else {
-                    p2Mana -= basic_cost;
-                }
-                turnOver = true;
-                updateUI(p1Health, p2Health);
             }
         });
 
         heavy_attack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!checkShield(shield_status)) {
-                    if (player == 1) {
-                        p2Health -= heavy_damage;
+                if ((player == 1 && checkForCost(heavy_cost, p1Mana))|| (player == 2 && checkForCost(heavy_cost, p2Mana))) {
+                    if (!checkShield(shield_status)) {
+                        if (player == 1) {
+                            p2Health -= heavy_damage;
+                        } else {
+                            p1Health -= heavy_damage;
+                        }
                     } else {
-                        p1Health -= heavy_damage;
+                        turnOffShield();
                     }
+                    if (player == 1) {
+                        p1Mana -= heavy_cost;
+                    } else {
+                        p2Mana -= heavy_cost;
+                    }
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 } else {
-                    turnOffShield();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn",Toast.LENGTH_SHORT);
+                    toast.show();
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 }
-                if(player == 1) {
-                    p1Mana -= heavy_cost;
-                } else {
-                    p2Mana -= heavy_cost;
-                }
-                turnOver = true;
-                updateUI(p1Health, p2Health);
             }
         });
 
         dpr_attack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!checkShield(shield_status)) {
-                    dpr_rounds_left = 6;
-                    if (player == 1) {
-                        p2Health -= dpr_base_damage;
-                        p2_dpr = true;
+                if ((player == 1 && checkForCost(dpr_cost, p1Mana)) || (player == 2 && checkForCost(dpr_cost, p2Mana))) {
+                    if (!checkShield(shield_status)) {
+                        dpr_rounds_left = 6;
+                        if (player == 1) {
+                            p2Health -= dpr_base_damage;
+                            p2_dpr = true;
+                        } else {
+                            p1Health -= dpr_base_damage;
+                            p2_dpr = true;
+                        }
+                        dpr_rounds_left -= 1;
                     } else {
-                        p1Health -= dpr_base_damage;
-                        p2_dpr = true;
+                        turnOffShield();
                     }
-                    dpr_rounds_left -= 1;
+                    if (player == 1) {
+                        p1Mana -= dpr_cost;
+                    } else {
+                        p2Mana -= dpr_cost;
+                    }
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 } else {
-                    turnOffShield();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn",Toast.LENGTH_SHORT);
+                    toast.show();
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 }
-                if(player == 1) {
-                    p1Mana -= dpr_cost;
-                } else {
-                    p2Mana -= dpr_cost;
-                }
-                turnOver = true;
-                updateUI(p1Health, p2Health);
             }
         });
 
         shield.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                shield_status = true;
-                if(player == 1) {
-                    p1Mana -= shield_cost;
+                if ((player == 1 && checkForCost(shield_cost, p1Mana)) || (player == 2 && checkForCost(shield_cost, p2Mana))) {
+                    shield_status = true;
+                    if (player == 1) {
+                        p1Mana -= shield_cost;
+                    } else {
+                        p2Mana -= shield_cost;
+                    }
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 } else {
-                    p2Mana -= shield_cost;
+                    Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn",Toast.LENGTH_SHORT);
+                    toast.show();
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 }
-                turnOver = true;
-                updateUI(p1Health, p2Health);
             }
         });
 
         heal.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (player == 1) {
-                    p1Health += heal_effect;
-                    if (p1Health > 100) {
-                        p1Health = 100;
+                if ((player == 1 && checkForCost(heal_cost, p1Mana)) || (player == 2 && checkForCost(heal_cost, p2Mana))) {
+                    if (player == 1) {
+                        p1Health += heal_effect;
+                        if (p1Health > 100) {
+                            p1Health = 100;
+                        }
+                    } else {
+                        p2Health += heal_effect;
+                        if (p2Health > 100) {
+                            p2Health = 100;
+                        }
                     }
-                } else {
-                    p2Health += heal_effect;
-                    if (p2Health > 100) {
-                        p2Health = 100;
+                    if (player == 1) {
+                        p1Mana -= heal_cost;
+                    } else {
+                        p2Mana -= heal_cost;
                     }
-                }
-                if(player == 1) {
-                    p1Mana -= heal_cost;
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 } else {
-                    p2Mana -= heal_cost;
+                    Toast toast = Toast.makeText(getApplicationContext(), "Not enough mana, lose a turn",Toast.LENGTH_SHORT);
+                    toast.show();
+                    turnOver = true;
+                    updateUI(p1Health, p2Health);
                 }
-                turnOver = true;
-                updateUI(p1Health, p2Health);
             }
         });
     }
@@ -158,14 +194,19 @@ public class PlayScreen extends AppCompatActivity {
         if (p1Health <= 0) {
             //print Player 2 wins
             gameOver = true;
+            Intent whoWon = new Intent(PlayScreen.this, WinScreen.class);
+            startActivity(whoWon);
         } else if (p2Health <= 0) {
             //print Player 1 wins
             gameOver = true;
+            Intent whoWon = new Intent(PlayScreen.this, WinScreen.class);
+            startActivity(whoWon);
         }
 
-        if(gameOver){
-            System.exit(0);
-        }
+        /*if(gameOver){
+            Intent whoWon = new Intent(PlayScreen.this, WinScreen.class);
+            startActivity(whoWon);
+        }*/
 
         if (turnOver && player == 1) {
             p1Mana += mana_per_round;
@@ -217,7 +258,13 @@ public class PlayScreen extends AppCompatActivity {
         }
     }
 
-
+    boolean checkForCost(int cost, int have) {
+        if(cost < have) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     boolean checkShield(boolean s) {
         return s;
     }
