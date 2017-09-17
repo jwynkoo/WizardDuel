@@ -17,7 +17,7 @@ public class MainMenu extends AppCompatActivity {
         final Button gotoPlay = (Button)findViewById(R.id.gotoPlay);
         gotoPlay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent goPlay = new Intent(MainMenu.this, GesturePlayScreen.class);
+                Intent goPlay = new Intent(MainMenu.this, PlayScreen.class);
                 startActivity(goPlay);
             }
         });
