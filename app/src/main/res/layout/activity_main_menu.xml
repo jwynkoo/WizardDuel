@@ -24,17 +24,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="69dp"
-        android:id="@+id/aboutView"
-        app:srcCompat="@drawable/ic_info_black_36dp"
-        tools:layout_editor_absoluteY="495dp"
-        tools:layout_editor_absoluteX="-93dp"
-        android:clickable="true"
-        />
-
-
     <Button
         android:id="@+id/gotoPlay"
         android:layout_width="wrap_content"

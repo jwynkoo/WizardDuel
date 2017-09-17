@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifTextView;
+
+import static com.example.jacob.wizardduel.R.id.fire_play1;
+import static com.example.jacob.wizardduel.R.id.fire_play2;
+
 public class PlayScreen extends AppCompatActivity {
 
     int player = 1;
@@ -23,22 +28,22 @@ public class PlayScreen extends AppCompatActivity {
     int p1Mana = 10;
     int p2Mana = 10;
     int maxMana = 100;
-    int basic_cost = 0;
-    int basic_damage = 1;
-    int heavy_cost = 5;
-    int heavy_damage = 25;
-    int dpr_cost = 0;
-    int dpr_base_damage = 5;
-    int dpr_round_damage = 20;
+    int basic_cost = 5;
+    int basic_damage = 12;
+    int heavy_cost = 10;
+    int heavy_damage = 20;
+    int dpr_cost = 15;
+    int dpr_base_damage = 10;
+    int dpr_round_damage = 4;
     int dpr_rounds_left_1 = 0;
     int dpr_rounds_left_2 = 0;
     boolean p1_dpr = false;
     boolean p2_dpr = false;
-    int shield_cost = 0;
+    int shield_cost = 12;
     boolean shield_status = false;
-    int heal_cost = 0;
-    int heal_effect = 5;
-    final int mana_per_round = 5;
+    int heal_cost = 15;
+    int heal_effect = 20;
+    final int mana_per_round = 10;
     boolean turnOver = false;
     boolean gameOver = false;
     int refresh = 0;
@@ -126,9 +131,9 @@ public class PlayScreen extends AppCompatActivity {
                 if ((player == 1 && checkForCost(dpr_cost, p1Mana)) || (player == 2 && checkForCost(dpr_cost, p2Mana))) {
                     if (!checkShield(shield_status)) {
                         if(player == 1) {
-                            dpr_rounds_left_2 = 6;
+                            dpr_rounds_left_2 = 5;
                         } else {
-                            dpr_rounds_left_1 = 6;
+                            dpr_rounds_left_1 = 5;
                         }
                         if (player == 1) {
                             p2Health -= dpr_base_damage;
@@ -272,14 +277,20 @@ public class PlayScreen extends AppCompatActivity {
                 p1Mana = maxMana;
             }
             player = 2;
-            rotateScreen(isreverse);
+            GifTextView fire_player1 = (GifTextView) findViewById(fire_play1);
+            GifTextView fire_player2 = (GifTextView) findViewById(fire_play2);
+            fire_player2.setVisibility(View.VISIBLE);
+            fire_player1.setVisibility(View.INVISIBLE);
         } else if (turnOver && player == 2) {
             p2Mana += mana_per_round;
             if (p2Mana > maxMana) {
                 p2Mana = maxMana;
             }
             player = 1;
-            rotateScreen(isreverse);
+            GifTextView fire_player1 = (GifTextView) findViewById(fire_play1);
+            GifTextView fire_player2 = (GifTextView) findViewById(fire_play2);
+            fire_player1.setVisibility(View.VISIBLE);
+            fire_player2.setVisibility(View.INVISIBLE);
         }
 
         if (player == 1) {

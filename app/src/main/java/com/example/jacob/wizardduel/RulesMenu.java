@@ -15,12 +15,12 @@ public class RulesMenu extends AppCompatActivity {
         TextView rules = (TextView) findViewById(R.id.rules);
         rules.setText("\n\nGeneral Rules:\n" +
                 "Number of players: 2\n" +
-                "Each player takes turns separately.\n The phone should not be seen by both players at the same time.\n After one player's turn the phone should be handed off.\n" +
+                "Each player takes turns separately.\nAfter one player's turn, the phone should be handed off.\n" +
                 "\n\nGameplay Rules:\n \n" +
-                "1. Each Player starts with 100 HP and 100 Mana.\n \n" +
+                "1. Each Player starts with 100 HP and 10 Mana.\n \n" +
                 "2. Players regenerate 10 Mana per turn.\n \n" +
                 "3. Every attack spell costs varying amounts of Mana depending on the strength of the spell.\n \n" +
-                "4. Shield spells negate all damage, but cost seven Mana\n \n" +
-                "5. Heal spells heal the player for two HP for every one Mana consumed. They also end any damage per round effects.\n \n");
+                "4. Shield spells negate all damage, but cost 12 Mana\n \n" +
+                "5. Heal spells heal the player for 20 HP.\n \n");
     }
 }

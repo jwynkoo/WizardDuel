@@ -41,13 +41,5 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        final ImageButton gotoInfo = (ImageButton) findViewById(R.id.aboutView);
-        gotoInfo.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent goInfo = new Intent(MainMenu.this, InfoMenu.class);
-                startActivity(goInfo);
-            }
-
-        });
     }
 }
