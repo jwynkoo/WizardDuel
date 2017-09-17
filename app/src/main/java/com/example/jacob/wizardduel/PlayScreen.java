@@ -284,9 +284,20 @@ public class PlayScreen extends AppCompatActivity {
 
         if (player == 1) {
             checkForDPR(p1_dpr);
+            if(p1Health < 0){
+                gameOver= true;
+                Intent whoWon  = new Intent(PlayScreen.this, WinScreen.class);
+                whoWon.putExtra("KEY", "Player 2");
+                startActivity(whoWon);
+            }
             turnID.setText("Player 1's Turn");
         } else {
             checkForDPR(p2_dpr);
+            if(p2Health < 0) {
+                Intent whoWon  = new Intent(PlayScreen.this, WinScreen.class);
+                whoWon.putExtra("KEY", "Player 1");
+                startActivity(whoWon);
+            }
             turnID.setText("Player 2's Turn");
         }
 

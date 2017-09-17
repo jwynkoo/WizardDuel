@@ -15,6 +15,8 @@ import android.widget.Toast;
 import android.gesture.Gesture;
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifTextView;
+
 public class GesturePlayScreen extends AppCompatActivity implements OnGesturePerformedListener {
 
     int player = 1;
@@ -62,6 +64,7 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
     }
 
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
+        GifTextView fire_attack = (GifTextView) findViewById(R.id.fire_attack);
         ArrayList<Prediction> predictions =
                 gLibrary.recognize(gesture);
 
@@ -72,6 +75,7 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
             if (action.equals("Basic Attack Gesture")) {
                 if ((player == 1 && checkForCost(basic_cost, p1Mana)) || (player == 2 && checkForCost(basic_cost, p2Mana))) {
                     if (!checkShield(shield_status)) {
+                        fire_attack.setVisibility(View.VISIBLE);
                         if (player == 1) {
                             p2Health -= basic_damage;
                         } else {
@@ -240,14 +244,6 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
         final TextView turnID = (TextView) findViewById(R.id.turnID);
         final TextView stats = (TextView) findViewById(R.id.stats);
 
-        if (player == 1) {
-            checkForDPR(p1_dpr);
-            turnID.setText("Player 1's Turn");
-        } else {
-            checkForDPR(p2_dpr);
-            turnID.setText("Player 2's Turn");
-        }
-
         if (p1Health <= 0) {
             //print Player 2 wins
             gameOver = true;
@@ -276,7 +272,27 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
             player = 1;
         }
 
+        if (player == 1) {
+            checkForDPR(p1_dpr);
+            if(p1Health < 0){
+                gameOver= true;
+                Intent whoWon  = new Intent(GesturePlayScreen.this, WinScreen.class);
+                whoWon.putExtra("KEY", "Player 2");
+                startActivity(whoWon);
+            }
+            turnID.setText("Player 1's Turn");
+        } else {
+            checkForDPR(p2_dpr);
+            if(p2Health < 0) {
+                Intent whoWon  = new Intent(GesturePlayScreen.this, WinScreen.class);
+                whoWon.putExtra("KEY", "Player 1");
+                startActivity(whoWon);
+            }
+            turnID.setText("Player 2's Turn");
+        }
+
         stats.setText("P1 Health: " + p1Health + "/100\n" + "P1 Mana: " + p1Mana + "/100\n\n\n" + "P2 Health: " + p2Health + "/100\n" + "P2 Mana: " + p2Mana + "/100\n");
+
     }
 
     void checkForDPR(boolean status) {

@@ -20,7 +20,7 @@ public class RulesMenu extends AppCompatActivity {
                 "1. Each Player starts with 100 HP and 100 Mana.\n \n" +
                 "2. Players regenerate 10 Mana per turn.\n \n" +
                 "3. Every attack spell costs varying amounts of Mana depending on the strength of the spell.\n \n" +
-                "4. Shield spells negate all damage, but cost the amount of Mana of the spell that is being shielded plus one. If no spell is shielded, the base Mana cost is seven Mana\n \n" +
+                "4. Shield spells negate all damage, but cost seven Mana\n \n" +
                 "5. Heal spells heal the player for two HP for every one Mana consumed. They also end any damage per round effects.\n \n");
     }
 }
