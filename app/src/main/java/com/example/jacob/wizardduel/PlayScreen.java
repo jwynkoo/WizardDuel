@@ -19,7 +19,7 @@ public class PlayScreen extends AppCompatActivity {
     int maxMana = 100;
     int basic_cost = 0;
     int basic_damage = 1;
-    int heavy_cost = 30;
+    int heavy_cost = 5;
     int heavy_damage = 25;
     int dpr_cost = 0;
     int dpr_base_damage = 0;
