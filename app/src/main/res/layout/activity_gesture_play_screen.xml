@@ -38,7 +38,9 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="0dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <pl.droidsonroids.gif.GifTextView
         android:id="@+id/fire_play2"

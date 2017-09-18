@@ -163,11 +163,11 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
                     }
                     turnOver = true;
                     if(player == 1) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_1 + " rounds.", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_2 + " rounds.", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_2 + " rounds.", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Used " + dpr_cost + " mana and did " + dpr_base_damage + " damage. Will do " + dpr_round_damage + " for " + dpr_rounds_left_1 + " rounds.", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
                     }
@@ -325,7 +325,7 @@ public class GesturePlayScreen extends AppCompatActivity implements OnGesturePer
     }
 
     boolean checkForCost(int cost, int have) {
-        if (cost < have) {
+        if (cost <= have) {
             return true;
         } else {
             return false;
